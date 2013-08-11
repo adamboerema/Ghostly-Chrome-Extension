@@ -1,0 +1,7 @@
+.special-cursor{
+	cursor: 'wait';
+}
+
+.tagged{
+	border: red 30px solid;
+}
