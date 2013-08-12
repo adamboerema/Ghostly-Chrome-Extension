@@ -8,18 +8,11 @@
  */
 
 var activate = {
-	onState : false,
-	interval : null,
+	onState : null,
+	interval : null,	
 	
 	init : function(){
-		if(activate.onState){
-			activate.onState = false;
-		} else {
-			activate.onState = true;
-		}
-		console.log('changed the cursor');
-		//Change cursor on click and off if user clicks
-		console.log(activate.onState);
+		activate.onState = true;
 		document.body.style.cursor = 'wait';
 		activate.alterImages(activate.onState);
 		
@@ -36,8 +29,7 @@ var activate = {
 		activate.interval = setInterval(function(){
 			for(i=0; i < images.length; i++){
 				if(images[i].height > 150 || images[i].width > 150){
-					//add class
-					if(onState){
+					if(onState == true){
 						activate.addEvents(images[i]);
 					} else{
 						activate.removeEvents(images[i]);
@@ -47,22 +39,57 @@ var activate = {
 		}, 500);
 	},
 	addEvents : function(e) {
-		
-		if(!e.classList.contains('tagged')){
-			e.classList.add('tagged');
-			e.onclick = function(){
-				alert(e.src);
-			}
+		console.log('add');
+		if(!e.classList.contains('tagger-image')){
+			e.classList.add('tagger-image');
+			activate.wrap(e);
 		}
 	},
 		
 	removeEvents : function(e) {
-		e.classList.remove('tagged');
-		e.onclick = function(){
+		console.log('remove');
+		if(e.classList.contains('tagger-image')){
+			var clone = e,
+				originalParent = e.parentNode.parentNode;
+				
+			originalParent.removeChild(e.parentNode);
+			originalParent.appendChild(clone);
+			clone.classList.remove('tagger-image');
+		}
+	},
+	
+	/**
+	 * Wrap element with a container div element
+ 	 * @param {Object} el
+	 */
+	wrap : function(e){
+		var parent = e.parentNode,
+			clone = e,
+			height = e.height,
+			width = e.width;
+
+		//Setup container element
+		var container = document.createElement('div');
+		container.className = 'tagger-container';
+		
+		//add and setup the overlay 
+		var overlay = document.createElement('div');
+		overlay.className = 'tagger-overlay';
+		overlay.style.height = height + 'px';
+		overlay.style.width = width + 'px';
+		overlay.onclick = function(){
+			alert(e.src);
 			return false;
 		}
-	}
+		
+ 		//Set up the DOM
+		parent.removeChild(e);
+		container.appendChild(clone);
+		container.appendChild(overlay);
+		parent.appendChild(container);
 
+		
+	}
 }
 
 activate.init();

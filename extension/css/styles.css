@@ -2,6 +2,19 @@
 	cursor: 'wait';
 }
 
-.tagged{
-	border: red 30px solid;
+.tagger-overlay{
+	display:block;
+	height:100px;
+	left: 0%;
+	margin: 0px;
+	opacity: .2;
+	padding:0px;
+	position:absolute;
+	top: 0%;
+	width: 100px;
+	z-index: 99999999;
+}
+
+.tagger-overlay:hover{
+	background:#FF0000;
 }
