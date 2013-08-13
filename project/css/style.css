@@ -1,0 +1,445 @@
+/*   
+Website Name: Ghostly
+Website URI: #
+Description: Ghostly – A collection of shitty things on the internet curated by you
+Author: Adam Boerema & Rob Dozier
+Author URI: http://adamboerema.com http://robdozier.com
+Version: 1
+*/
+
+/*-------------------------------------------------------------------
+
+[BODY]
+
+-------------------------------------------------------------------*/
+
+* {
+    -webkit-font-smoothing: antialiased;
+    list-style: none;
+    margin: 0;
+    outline: none;
+    padding: 0;
+}
+
+html {
+	height: 100%;
+	position: relative;
+}
+
+body {
+	background: #fafafa;
+    font: 62.5% "Helvetica Neue", Helvetica, Arial, sans-serif;
+    position: relative;
+}
+
+
+
+
+
+/*-------------------------------------------------------------------
+
+[HEADER]
+
+-------------------------------------------------------------------*/
+
+#main-header {
+	background: #0e0e0e;
+	height: 100%;
+	left: 0;
+	position: fixed;
+	top: 0;
+}
+
+#main-header .main-heading {
+	position: relative;
+}
+
+#main-header .main-logo {
+	display: block;
+	overflow: hidden;
+	text-indent: -100%;
+}
+
+#main-header .main-menu {
+	display: block;
+	height: 15px;
+	overflow: hidden;
+	position: absolute;
+	right: 0;
+	text-indent: -100%;
+	width: 20px;
+}
+
+#main-header .main-menu span {
+	background: url("../img/bg-menu.png") center top no-repeat;
+	background-size: 20px 30px;
+	display: block;
+	height: 15px;
+	left: 0;
+	position: absolute;
+	top: 0;
+	transition: 0.5s ease;
+		-moz-transition: 0.5s ease;
+		-o-transition: 0.5s ease;
+		-webkit-transition: 0.5s ease;
+	width: 20px;
+}
+
+#main-header .main-menu span.menu-hide {
+	background-position: center -15px;
+	opacity: 0;
+	transform: scale(.3,.3);
+		-moz-transform: scale(.3,.3);
+		-o-transform: scale(.3,.3);
+		-webkit-transform: scale(.3,.3);
+}
+
+#main-header.hide .main-menu span.menu-display {
+	opacity: 0;
+	transform: scale(.3,.3);
+		-moz-transform: scale(.3,.3);
+		-o-transform: scale(.3,.3);
+		-webkit-transform: scale(.3,.3);
+}
+
+#main-header.hide .main-menu span.menu-hide {
+	opacity: 1;
+	transform: scale(1,1);
+		-moz-transform: scale(1,1);
+		-o-transform: scale(1,1);
+		-webkit-transform: scale(1,1);
+}
+
+@media screen and (min-width: 960px) {
+
+	#main-header {
+		width: 300px;
+	}
+
+	#main-header .main-header-wrapper {
+		margin: 50px;
+	}
+	
+	#main-header .main-logo {
+		background: url("../img/bg-logo.png") no-repeat;
+		background-size: 130px 36px;
+		height: 36px;
+		width: 130px;
+	}
+	
+	#main-header .main-menu {
+		top: 9px;
+	}
+
+}
+
+
+
+
+
+/*-------------------------------------------------------------------
+
+[HOMEPAGE STYLES]
+
+-------------------------------------------------------------------*/
+
+#main-grid {
+	position: relative;
+}
+
+#main-grid .grid-item {
+	background: #fff;
+	box-shadow: 0 1px 5px rgba(0, 0, 0, 0.05);
+	position: relative;
+}
+
+#main-grid .grid-vote {
+	background: url("../img/bg-vote.png") no-repeat;
+	background-size: 15px 50px;
+	color: #0e0e0e;
+	display: inline-block;
+	font-size: 1.6em;
+	font-weight: 700;
+	height: 25px;
+	line-height: 25px;
+	margin: 30px;
+	padding: 0 0 0 20px;
+	position: relative;
+	z-index: 13;
+}
+
+#main-grid .grid-item:hover .grid-vote {
+	background-position: 0 -25px;
+	color: #fff;
+}
+
+#main-grid .grid-overlay {
+	background: rgba(232, 87, 79, 0.95);
+	display: none;
+	height: 100%;
+	left: 0;
+	position: absolute;
+	top: 0;
+	width: 100%;
+	z-index: 11;
+}
+
+#main-grid .grid-item:hover .grid-overlay {
+	display: block;
+}
+
+@media screen and (max-width: 679px) {
+
+}
+
+@media screen and (min-width: 680px) {
+
+}
+
+@media screen and (max-width: 959px) {
+
+}
+
+@media screen and (min-width: 680px) and (max-width: 959px) {
+
+}
+
+@media screen and (min-width: 960px) {
+
+	#main-grid {
+		margin: 20px 20px 0 320px;
+	}
+	
+	#main-grid .grid-item {
+		display: none;
+		width: 250px;
+	}
+
+}
+
+@media screen and (min-width: 960px) and (max-width: 1279px) {
+
+}
+
+@media screen and (min-width: 1280px) {
+
+}
+
+
+
+
+
+/*-------------------------------------------------------------------
+
+[MAIN COLORS]
+
+-------------------------------------------------------------------*/
+
+.color-white {
+	color: #fff;
+}
+
+.color-black {
+	color: #0e0e0e;
+}
+
+
+
+
+
+/*-------------------------------------------------------------------
+
+[CONTAINER STYLES]
+
+-------------------------------------------------------------------*/
+
+@media screen and (max-width: 679px) {
+
+}
+
+@media screen and (min-width: 680px) and (max-width: 959px) {
+
+}
+
+@media screen and (max-width: 959px) {
+
+}
+
+@media screen and (min-width: 960px) {
+
+}
+
+@media screen and (min-width: 960px) and (max-width: 1279px) {
+
+}
+
+@media screen and (min-width: 1280px) {
+
+}
+
+
+
+
+
+/*-------------------------------------------------------------------
+
+[BUTTON STYLES]
+
+-------------------------------------------------------------------*/
+
+@media screen and (max-width: 679px) {
+
+}
+
+@media screen and (min-width: 680px) and (max-width: 959px) {
+
+}
+
+@media screen and (max-width: 959px) {
+
+}
+
+@media screen and (min-width: 960px) {
+
+}
+
+@media screen and (min-width: 960px) and (max-width: 1279px) {
+
+}
+
+@media screen and (min-width: 1280px) {
+
+}
+
+
+
+
+
+/*-------------------------------------------------------------------
+
+[DEFAULT STYLES]
+
+-------------------------------------------------------------------*/
+
+a {
+	text-decoration: none;
+}
+
+cite {
+
+}
+
+h1, .h1,
+h2, .h2,
+h3, .h3,
+h4, .h4,
+h5, .h5,
+h6, .h6 {
+
+}
+
+h1, .h1 {
+
+}
+
+h2, .h2 {
+
+}
+
+h3, .h3 {
+
+}
+
+h4, .h4 {
+
+}
+
+h5, .h5 {
+	
+}
+
+h6, .h6 {
+
+}
+
+img {
+	height: auto;
+	max-width: 100%;
+}
+
+input[type="email"],
+input[type="text"] {
+
+}
+
+input[type="email"]:focus,
+input[type="text"]:focus {
+
+}
+
+input[type="submit"] {
+
+}
+
+input[type="submit"]:hover {
+
+}
+
+em {
+
+}
+
+label {
+
+}
+
+mark {
+
+}
+
+p {
+
+}
+
+textarea {
+
+}
+
+
+
+
+
+/*-------------------------------------------------------------------
+
+[CUSTOM FONTS]
+
+-------------------------------------------------------------------*/
+
+@import url(http://fonts.googleapis.com/css?family=Vollkorn:400italic,700italic,400,700);
+
+
+
+
+
+/*-------------------------------------------------------------------
+
+[MISC]
+
+-------------------------------------------------------------------*/
+
+::-webkit-input-placeholder { color: #443d32; }
+
+::-moz-placeholder { color: #443d32; }
+
+:-ms-input-placeholder { color: #443d32; }
+
+input:-moz-placeholder { color: #443d32; }
+
+.clearfix:after {
+    clear: both;
+    content: " ";
+	display: block;
+	font-size: 0;
+	height: 0;
+	visibility: hidden;
+}
