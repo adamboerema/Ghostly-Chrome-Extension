@@ -23,7 +23,6 @@ var activate = {
 			activate.alterImages(activate.onState);
 		}
 	},
-	
 	alterImages : function(onState) {
 		var images = document.images;
 		activate.interval = setInterval(function(){
@@ -78,7 +77,7 @@ var activate = {
 		overlay.style.height = height + 'px';
 		overlay.style.width = width + 'px';
 		overlay.onclick = function(){
-			alert(e.src);
+			activate.sendImage(e.src);
 			return false;
 		}
 		
@@ -87,9 +86,20 @@ var activate = {
 		container.appendChild(clone);
 		container.appendChild(overlay);
 		parent.appendChild(container);
-
+	},
+	sendImage : function(img){
+		var ajax = new XMLHttpRequest(),
+			url = 'http://extension.local/api/add';
 		
-	}
+		//success listener
+		 ajax.onreadystatechange = function() {
+	        if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+	            console.log(ajax.responseText);
+	        }
+    	}
+    	ajax.open("POST", url, img);
+    	ajax.send();
+	},
 }
 
 activate.init();
