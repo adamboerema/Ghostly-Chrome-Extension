@@ -94,4 +94,26 @@ $(document).ready(function(){
 		return false;
 	});
 	
+	
+	
+	/*-------------------------------------------------------------------
+	 *
+	 * GRID VOTE
+	 *
+	-------------------------------------------------------------------*/
+	
+	var gridVote = $('#main-grid .grid-vote');
+	
+	gridVote.on('click', function(){
+		$(this).addClass('clicked');
+		$(this).find('.grid-vote-load').animate({
+			top: '0'
+		}, 1200);
+		setTimeout(function(){
+			$(this).removeClass('clicked');
+			$(this).addClass('banned');
+		}, 5000);
+		return false;
+	});
+	
 });

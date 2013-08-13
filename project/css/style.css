@@ -154,8 +154,6 @@ body {
 }
 
 #main-grid .grid-vote {
-	background: url("../img/bg-vote.png") no-repeat;
-	background-size: 15px 50px;
 	color: #0e0e0e;
 	display: inline-block;
 	font-size: 1.6em;
@@ -163,17 +161,95 @@ body {
 	height: 25px;
 	line-height: 25px;
 	margin: 30px;
-	padding: 0 0 0 20px;
 	position: relative;
 	z-index: 13;
 }
 
-#main-grid .grid-item:hover .grid-vote {
-	background-position: 0 -25px;
-	color: #fff;
+#main-grid .grid-vote.banned {
+	color: #e95c55;
 }
 
-#main-grid .grid-overlay {
+#main-grid .grid-vote .grid-vote-image {
+	display: block;
+	float: left;
+	height: 25px;
+	margin: 0 5px 0 0;
+	position: relative;
+	overflow: hidden;
+	top: 0;
+	width: 15px;
+}
+
+#main-grid .grid-vote.clicked .grid-vote-image {
+	-webkit-animation: bounce 0.8s ease-out;
+    -webkit-animation-iteration-count: infinite;
+}
+
+#main-grid .grid-vote .grid-vote-icon {
+	background: url("../img/bg-vote.png") no-repeat;
+	background-size: 15px 50px;
+	display: block;
+	float: left;
+	height: 25px;
+	left: 0;
+	line-height: 25px;
+	padding: 0 0 0 20px;
+	position: absolute;
+	top: 0;
+    z-index: 13;
+}
+
+#main-grid .grid-vote.banned .grid-vote-icon {
+	background-position: 0 -25px;
+	color: #e95c55;
+}
+
+#main-grid .grid-vote .grid-vote-shadow {
+	background: rgba(14, 14, 14, 0.1);
+	border-radius: 10px / 5px;
+	bottom: -2px;
+	content: "";
+	display: none;
+	height: 5px;
+	left: 3px;
+	position: absolute;
+	width: 10px;
+	z-index: 15;
+		-webkit-animation: grow 0.8s ease-out;
+	    -webkit-animation-iteration-count: infinite;
+}
+
+#main-grid .grid-vote.clicked .grid-vote-shadow {
+	display: block;
+}
+
+#main-grid .grid-vote .grid-vote-load {
+	background: #0e0e0e;
+	height: 25px;
+	left: 0;
+	position: absolute;
+	top: 25px;
+	width: 15px;
+}
+
+@-webkit-keyframes bounce {
+    0% { top: 0; }
+    50% { top: -5px; }
+    100% { top: 0; }
+}
+
+@-webkit-keyframes grow {
+    0% { -webkit-transform: scale(1,1); }
+    50% { -webkit-transform: scale(.4,.4); }
+    100% { -webkit-transform: scale(1,1); }
+}
+
+/*#main-grid .grid-item:hover .grid-vote {
+	background-position: 0 -25px;
+	color: #fff;
+}*/
+
+/*#main-grid .grid-overlay {
 	background: rgba(232, 87, 79, 0.95);
 	display: none;
 	height: 100%;
@@ -186,7 +262,7 @@ body {
 
 #main-grid .grid-item:hover .grid-overlay {
 	display: block;
-}
+}*/
 
 @media screen and (max-width: 679px) {
 
