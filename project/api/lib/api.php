@@ -57,7 +57,7 @@
 				try{
 					$q = $this->db->prepare('INSERT INTO submissions (url) 
 											 VALUES(:url)');
-					$q->bindParam(':url', $data['url']);
+					$q->bindParam(':url', $data['parameters']['url']);
 					$q->execute();
 				} 
 				catch (PDOException $e){
