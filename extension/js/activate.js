@@ -7,39 +7,46 @@
  * 
  */
 
+
 var activate = {
 	onState : null,
 	interval : null,	
 	
 	init : function(){
-		activate.onState = true;
-		document.body.style.cursor = 'wait';
+		//Activate the cursor override
+		document.getElementsByTagName('html')[0].classList.add('override-cursor');
+		
+		activate.onState = true;		
 		activate.alterImages(activate.onState);
 		
 		document.body.onclick = function(){
-			activate.onState = false;
-			window.clearInterval(activate.interval);
-			document.body.style.cursor = '';
-			activate.alterImages(activate.onState);
+			activate.disable();			
 		}
 	},
-	
+	disable: function(){
+		activate.onState = false;
+		window.clearInterval(activate.interval);
+		document.getElementsByTagName('html')[0].classList.remove('override-cursor');
+		activate.alterImages(activate.onState);
+	},
 	alterImages : function(onState) {
 		var images = document.images;
-		activate.interval = setInterval(function(){
-			for(i=0; i < images.length; i++){
-				if(images[i].height > 150 || images[i].width > 150){
-					if(onState == true){
+		if(onState == true){
+			activate.interval = setInterval(function(){
+				for(i=0; i < images.length; i++){
+					if(images[i].height > 150 || images[i].width > 150){
 						activate.addEvents(images[i]);
-					} else{
-						activate.removeEvents(images[i]);
-					}
-				}	
+					}	
+				}
+			}, 500);
+		} else {
+			for(i=0; i < images.length; i++){
+				activate.removeEvents(images[i]);
 			}
-		}, 500);
+		}
 	},
 	addEvents : function(e) {
-		console.log('add');
+		//console.log('add');
 		if(!e.classList.contains('tagger-image')){
 			e.classList.add('tagger-image');
 			activate.wrap(e);
@@ -47,7 +54,7 @@ var activate = {
 	},
 		
 	removeEvents : function(e) {
-		console.log('remove');
+		//console.log('remove');
 		if(e.classList.contains('tagger-image')){
 			var clone = e,
 				originalParent = e.parentNode.parentNode;
@@ -79,6 +86,7 @@ var activate = {
 		overlay.style.width = width + 'px';
 		overlay.onclick = function(){
 			alert(e.src);
+			activate.disable();
 			return false;
 		}
 		

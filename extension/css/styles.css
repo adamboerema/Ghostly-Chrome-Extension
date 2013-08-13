@@ -1,7 +1,6 @@
-.special-cursor{
-	cursor: 'wait';
+.override-cursor, .override-cursor *{
+	cursor: wait !important;
 }
-
 .tagger-overlay{
 	display:block;
 	height:100px;
@@ -14,7 +13,6 @@
 	width: 100px;
 	z-index: 99999999;
 }
-
 .tagger-overlay:hover{
 	background:#FF0000;
 }
