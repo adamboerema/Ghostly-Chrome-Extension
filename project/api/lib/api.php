@@ -53,6 +53,9 @@
 		 * 
 		 */
 		public function add($data){
+		    //var_dump($data);
+		    $image = $this->addImage($data);
+            
 			if($data['parameters']){
 				try{
 					$q = $this->db->prepare('INSERT INTO submissions (url) 
@@ -66,5 +69,88 @@
 			} else {
 				return false;
 			}
-		}	
+		}
+        /**
+         * @param string $url = Img to be locally stored
+         * @return array
+         * 
+         * Make curl request to store image locally
+         * returns array to add image
+         * 
+         */
+        private function addImage($url){
+            $img = $this->imagePath($url);
+            $ch = curl_init($url);
+            $fp = fopen($img['path'], 'wb');
+            curl_setopt($ch, CURLOPT_FILE, $fp);
+            curl_setopt($ch, CURLOPT_HEADER, 0);
+            
+            //Check if curl successful
+            if(curl_exec($ch)){
+                curl_close($ch);
+                fclose($fp);
+                $thumbnail = $this->imageResize($img['path'], $img['name'], $img['directory']);
+              
+                if($thumbnail){
+                  $image = array(
+                    'image' => array(
+                        'path' => $path['name'],
+                        'name' => $path['path']
+                    ),
+                    'thumbnail' => array(
+                        'path' => $thumbnail['path'],
+                        'name' => $thumbnail['name']
+                    )
+                  );
+                  return $image;
+                }
+            } else {
+                return false;
+            }
+        } 
+
+        /**
+         * @param string $url = Img to be broken down
+         * @return array
+         * 
+         * Break down the url into image path and name 
+         * 
+         */
+        private function imagePath($url){
+            $path = pathinfo($url);
+            $time = time();
+            
+            $image = array(
+                'directory' => ABSPATH. "/uploads/",
+                'path' => ABSPATH. "/uploads/{$time}_{$path['basename']}",
+                'name' => "{$time}_{$path['basename']}"
+            );
+            return $image;
+        }
+        
+        /**
+         * 
+         * @param string $name = Original img name
+         * @param string $url = Img to be broken down
+         * @return array
+         * 
+         * Break down the url into image path and name 
+         * 
+         */
+        private function imageResize($image, $name, $directory){
+            $thumbName = "thumb_{$name}";
+            $thumbPath = "{$directory}{$thumbName}";
+            
+            $thumb = new Imagick($image);
+            $thumb->cropThumbnailImage(300,300);
+            $thumb->writeImage($thumbPath);
+            $thumb->destroy();
+            
+            
+            $thumb = array(
+                'path' => $thumbPath,
+                'name' => $thumbName
+            );
+            return $thumb;
+        }   	
 	}
