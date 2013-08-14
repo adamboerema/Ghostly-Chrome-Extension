@@ -59,7 +59,8 @@ $(document).ready(function(){
 	-------------------------------------------------------------------*/
 	
 	var menu = $('#main-header'),
-		menuButton = $('#main-header .main-menu');
+		menuButton = $('#main-header .main-menu'),
+		gridWrapper = $('#main-grid-wrapper');
 	
 	menuButton.click(function(){
 		if(menu.position().left == 0){
@@ -70,7 +71,7 @@ $(document).ready(function(){
 			menuButton.animate({
 				right: '-35px'
 			}, 500, 'easeInOutExpo');
-			grid.animate({
+			gridWrapper.animate({
 				marginLeft: '70px'
 			}, 500, 'easeInOutExpo');
 			setTimeout(function(){
@@ -84,7 +85,7 @@ $(document).ready(function(){
 			menuButton.animate({
 				right: '0'
 			}, 500, 'easeInOutExpo');
-			grid.animate({
+			gridWrapper.animate({
 				marginLeft: '320px'
 			}, 500, 'easeInOutExpo');
 			setTimeout(function(){
@@ -105,14 +106,19 @@ $(document).ready(function(){
 	var gridVote = $('#main-grid .grid-vote');
 	
 	gridVote.on('click', function(){
-		$(this).addClass('clicked');
-		$(this).find('.grid-vote-load').animate({
-			top: '0'
-		}, 1200);
-		setTimeout(function(){
-			$(this).removeClass('clicked');
-			$(this).addClass('banned');
-		}, 5000);
+		if(!$(this).hasClass('banned')){
+			var $this = $(this),
+				gridNum = parseInt($this.find('.grid-text').text());
+			$this.addClass('clicked');
+			$this.find('.grid-vote-load').animate({
+				top: '0'
+			}, 1200);
+			setTimeout(function(){
+				$this.removeClass('clicked');
+				$this.addClass('banned');
+				$this.find('.grid-text').text((gridNum) + 1);
+			}, 3000);
+		}
 		return false;
 	});
 	
