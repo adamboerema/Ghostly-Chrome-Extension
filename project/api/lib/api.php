@@ -55,7 +55,33 @@
 		public function add($data){
 		    //var_dump($data);
 		    $image = $this->addImage($data);
-            
+			var_dump($image);
+			if($image){
+				try{
+					$q = $this->db->prepare('INSERT INTO entries (image_path, thumb_path)
+											 VALUES(:image_path, :thumb_path)');
+					//$q->bindParam(':plus_votes', 1, PDO::PARAM_INT);
+					$q->bindParam(':image_path', $image['image']['path']);
+					$q->bindParam(':thumb_path', $image['thumbnail']['path']);
+					$q->execute();
+					$insertId = $this->db->lastInsertId();
+					
+					if($insertId){
+						$q = $this->db->prepare('INSERT INTO submissions (entry_id, url) 
+											 VALUES(:entry_id, :url)');
+						$q->bindParam(':entry_id', $insertId, PDO::PARAM_INT);
+						//$q->bindParam(':url', $data['parameters']['url']);
+						$q->bindParam(':url', $data);
+						$q->execute();
+					}
+				} 
+				catch (PDOException $e){
+					echo $e->getMessage();
+				}
+			} else{
+				return false;
+			}
+			
 			if($data['parameters']){
 				try{
 					$q = $this->db->prepare('INSERT INTO submissions (url) 
@@ -94,14 +120,15 @@
                 if($thumbnail){
                   $image = array(
                     'image' => array(
-                        'path' => $path['name'],
-                        'name' => $path['path']
+                        'path' => $img['path'],
+                        'name' => $img['name']
                     ),
                     'thumbnail' => array(
                         'path' => $thumbnail['path'],
                         'name' => $thumbnail['name']
                     )
                   );
+				  
                   return $image;
                 }
             } else {
@@ -140,13 +167,12 @@
         private function imageResize($image, $name, $directory){
             $thumbName = "thumb_{$name}";
             $thumbPath = "{$directory}{$thumbName}";
-            
-            $thumb = new Imagick($image);
+			
+           /* $thumb = new Imagick($image);
             $thumb->cropThumbnailImage(300,300);
             $thumb->writeImage($thumbPath);
             $thumb->destroy();
-            
-            
+            */
             $thumb = array(
                 'path' => $thumbPath,
                 'name' => $thumbName

@@ -1,2 +1,4 @@
 .project
 .DSstore
+
+project/uploads/*
