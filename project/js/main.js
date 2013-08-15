@@ -1,7 +1,5 @@
 $(document).ready(function(){
 
-
-
 	/*-------------------------------------------------------------------
 	 *
 	 * MAIN GRID
@@ -9,7 +7,9 @@ $(document).ready(function(){
 	-------------------------------------------------------------------*/
 	
 	var grid = $('#main-grid'),
-		gridItem = $('#main-grid .grid-item');
+		gridItem = $('#main-grid .grid-item'),
+		limit = 10,
+		offset = 10;
 
 	grid.imagesLoaded(function() {
 	
@@ -34,12 +34,25 @@ $(document).ready(function(){
 		
 		function onScroll(event) {
 			var winHeight = window.innerHeight ? window.innerHeight : $(window).height();
-			var closeToBottom = ($(window).scrollTop() + winHeight > $(document).height() - 100);
+			var closeToBottom = ($(window).scrollTop() + winHeight > $(document).height() - 50);
 			if (closeToBottom) {
-				var items = $('#main-grid .grid-item'),
-					firstTen = items.slice(0, 10);
-				grid.append(firstTen.clone());
-				applyLayout();
+				$.ajax({
+					'url': baseurl.url + 'models/get_all.php',
+					'type': 'POST',
+					'data' : {
+						'limit' : limit,
+						'offset' : offset
+					},
+					success: function(data){
+						var result = data.replace(/ /g, '');
+						if(result && result !== 'false'){
+							grid.append(data);
+							applyLayout();
+							offset += 10;
+						}
+					
+					}
+				})
 			}
 		};
 		

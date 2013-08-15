@@ -7,28 +7,46 @@
  * 
  */
 
-var placemark = {
+var pageload = {
+	interval : null,
 	
-	createButton : function(context, src){
-		var button = document.createElement('button')
-		button.innerHTML = "REAPER";
-		button.value = src;
-		button.class = 'reaper-button';
-		button.style.zIndex = 99999999;
-		button.style.left = '0%';
-		button.style.top = '0%';
-		button.style.position = 'absolute';
-		button.style.height = '75px';
-		button.style.width = '75px';
-	    button.onclick = function(){
-	    	alert('hi');
-	    };
-	    
-	   context.parentNode.appendChild(button);
+	condemn : function(object){
+		var urls = [];
+		for(var key in object){
+			var obj = object[key];
+			for (var url in obj){
+				urls.push(obj[url]);
+			}
+		}
+		var images = document.images;
+		pageload.interval = setInterval(function(){
+			for(i=0; i < images.length; i++){
+				if(urls.indexOf(images[i].src) >= 0 && !images[i].classList.contains('condemned')){
+					images[i].classList.add('condemned');
+					images[i].src = 'http://3.bp.blogspot.com/-tH0gsZtUZBM/Tx-MoaF0gRI/AAAAAAAAAVg/HIvuUUzXzz0/s320/nic_cage_faceoff11.jpg';
+				}	
+			}
+		}, 500);
+	},
+	
+	imageList : function(){
+		var ajax = new XMLHttpRequest(),
+			url = 'http://extension.local/api/getcondemned';
+		
+		//success listener
+		 ajax.onreadystatechange = function() {
+	        if (ajax.readyState == 4 && ajax.status == 200) {
+	            var response = JSON.parse(ajax.responseText);
+	          	pageload.condemn(response);
+	        }
+    	}
+    	ajax.open("POST", url, true);
+    	ajax.setRequestHeader( 'Content-Type', 'application/x-www-form-urlencoded; charset=UTF-8');
+    	ajax.send(null);
 	}
 }
 
 
-//window.load = placemark.getImages()
+window.load = pageload.imageList();
 
 

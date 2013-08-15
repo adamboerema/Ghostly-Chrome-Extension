@@ -16,8 +16,5 @@
 	 * Trigger API
 	 * 
 	 =============================================================*/
-	//$api->$url['action']($url['data']);
-	
-	$api->add('http://media-cache-ak0.pinimg.com/236x/09/42/84/09428430d6bb9d7b7fdae0baabb7f999.jpg');
-
+	$api->$url['action']($url['data']);
 ?>

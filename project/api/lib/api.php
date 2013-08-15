@@ -53,49 +53,85 @@
 		 * 
 		 */
 		public function add($data){
-		    //var_dump($data);
-		    $image = $this->addImage($data);
-			var_dump($image);
-			if($image){
-				try{
-					$q = $this->db->prepare('INSERT INTO entries (image_path, thumb_path)
-											 VALUES(:image_path, :thumb_path)');
-					//$q->bindParam(':plus_votes', 1, PDO::PARAM_INT);
-					$q->bindParam(':image_path', $image['image']['path']);
-					$q->bindParam(':thumb_path', $image['thumbnail']['path']);
-					$q->execute();
-					$insertId = $this->db->lastInsertId();
-					
-					if($insertId){
-						$q = $this->db->prepare('INSERT INTO submissions (entry_id, url) 
-											 VALUES(:entry_id, :url)');
-						$q->bindParam(':entry_id', $insertId, PDO::PARAM_INT);
-						//$q->bindParam(':url', $data['parameters']['url']);
-						$q->bindParam(':url', $data);
-						$q->execute();
-					}
-				} 
-				catch (PDOException $e){
-					echo $e->getMessage();
-				}
-			} else{
-				return false;
-			}
-			
 			if($data['parameters']){
-				try{
-					$q = $this->db->prepare('INSERT INTO submissions (url) 
-											 VALUES(:url)');
-					$q->bindParam(':url', $data['parameters']['url']);
-					$q->execute();
-				} 
-				catch (PDOException $e){
-					echo $e->getMessage();
+				$image = $this->addImage($data['parameters']['url']);
+				if($image){
+					try{
+						$q = $this->db->prepare('INSERT INTO entries (image_name, thumb_name)
+												 VALUES(:image_path, :thumb_path)');
+						$q->bindParam(':image_path', $image['image']['name']);
+						$q->bindParam(':thumb_path', $image['thumbnail']['name']);
+						$q->execute();
+						$insertId = $this->db->lastInsertId();
+						
+						if($insertId){
+							$q = $this->db->prepare('INSERT INTO submissions (entry_id, url) 
+												 VALUES(:entry_id, :url)');
+							$q->bindParam(':entry_id', $insertId, PDO::PARAM_INT);
+							$q->bindParam(':url', $data['parameters']['url']);
+							$q->execute();
+						}
+					} 
+					catch (PDOException $e){
+						echo $e->getMessage();
+					}
+				} else{
+					return false;
 				}
-			} else {
-				return false;
-			}
+			}	
 		}
+		
+		/**
+		 * 
+		 * @access public
+		 * @return json
+		 * 
+		 * Get json encoded url listing
+		 * 
+		 * /api/getsubmissions
+		 * 
+		 */
+		public function getall(){
+			try{
+				$q = $this->db->prepare("SELECT * FROM submissions ORDER BY id DESC");
+				$q->execute();
+				
+				//Only fetch one result
+				$results = $q->fetchall(PDO::FETCH_OBJ);
+				echo json_encode($results);
+			}
+			catch (PDOException $e){
+				echo $e->getMessage();
+			}			
+		}
+		
+		
+		/**
+		 * 
+		 * @access public
+		 * @return json
+		 * 
+		 * Get json encoded url listing
+		 * 
+		 * /api/getsubmissions
+		 * 
+		 */
+		public function getcondemned(){
+			try{
+				$q = $this->db->prepare("SELECT url FROM submissions AS s
+										 LEFT JOIN entries ON s.entry_id = entries.id
+										 WHERE entries.condemned = 1 ORDER BY s.id DESC
+										");
+				$q->execute();
+				$results = $q->fetchall(PDO::FETCH_OBJ);
+				echo json_encode($results);
+			}
+			catch (PDOException $e){
+				echo $e->getMessage();
+			}			
+		}
+		
+		
         /**
          * @param string $url = Img to be locally stored
          * @return array
@@ -120,11 +156,9 @@
                 if($thumbnail){
                   $image = array(
                     'image' => array(
-                        'path' => $img['path'],
                         'name' => $img['name']
                     ),
                     'thumbnail' => array(
-                        'path' => $thumbnail['path'],
                         'name' => $thumbnail['name']
                     )
                   );
@@ -168,11 +202,11 @@
             $thumbName = "thumb_{$name}";
             $thumbPath = "{$directory}{$thumbName}";
 			
-           /* $thumb = new Imagick($image);
+            $thumb = new Imagick($image);
             $thumb->cropThumbnailImage(300,300);
             $thumb->writeImage($thumbPath);
             $thumb->destroy();
-            */
+            			
             $thumb = array(
                 'path' => $thumbPath,
                 'name' => $thumbName
