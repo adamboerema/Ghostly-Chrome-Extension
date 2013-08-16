@@ -22,6 +22,11 @@
 						<span class="menu-display"></span>
 						<span class="menu-hide"></span>
 					</a>
+					<em>A collection of stupid shit from <br /> the internet curated by you</em>
+				</div>
+				<div class="signed-out">
+					<a class="button red" href="#">Sign Up</a>
+					<a class="button dark-grey" href="#">Login</a>
 				</div>
 			</div>
 		</header>

@@ -3,10 +3,8 @@
 <?php require('models/model.php'); $model = new Model(DB_USER, DB_PASS, DB_HOST, DB_NAME);?>
 
 <div id="main-grid-wrapper">
-	<a href="">
-		<div class="announcement-bar">
-			<p>Click here to download our chrome extension</p>
-		</div>
+	<a class="announcement-bar" href="#">
+		<p>Click here to download our chrome extension &rarr;</p>
 	</a>
 	<?php $entries = $model->getAll();?>
 	<section id="main-grid">
