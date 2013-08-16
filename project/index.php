@@ -13,7 +13,7 @@
 				<figure class="grid-image">
 					<img alt="" src="/uploads/<?php echo $entry->thumb_name ?>" width="250" />
 				</figure>
-				<a data-id=<?php echo $entry->id; ?> class="grid-vote<?php if($entry->condemned == 1){ echo ' banned'; } ?>" href="#">
+				<a data-id=<?php echo $entry->id; ?> class="grid-vote" href="#">
 					<span class="grid-vote-image">
 						<span class="grid-vote-icon"></span>
 						<span class="grid-vote-load"></span>
