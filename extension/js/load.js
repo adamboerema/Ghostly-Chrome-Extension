@@ -6,7 +6,7 @@
  * @author Rob Dozier
  * 
  */
-baseurl = 'http://extension.local/';
+baseurl = 'http://ec2-184-72-189-254.compute-1.amazonaws.com';
 
 var pageload = {
 	interval : null,
