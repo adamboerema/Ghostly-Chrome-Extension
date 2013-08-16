@@ -7,13 +7,15 @@ $(document).ready(function(){
 	-------------------------------------------------------------------*/
 	
 	var grid = $('#main-grid'),
-		gridItem = $('#main-grid .grid-item'),
-		limit = 10,
-		offset = 10;
-
+		gridItem = $('#main-grid .grid-item');
+		
 	grid.imagesLoaded(function() {
 	
 		var handler = null;
+		
+		limit = 10;
+		offset = 10;
+		waiting = false;
 		
         var options = {
 			autoResize: true,
@@ -35,7 +37,9 @@ $(document).ready(function(){
 		function onScroll(event) {
 			var winHeight = window.innerHeight ? window.innerHeight : $(window).height();
 			var closeToBottom = ($(window).scrollTop() + winHeight > $(document).height());
-			if (closeToBottom) {
+			console.log(waiting);
+			if (closeToBottom && !waiting) {
+				waiting = true;	
 				$.ajax({
 					'url': baseurl.url + 'models/get_all.php',
 					'type': 'POST',
@@ -50,9 +54,11 @@ $(document).ready(function(){
 							applyLayout();
 							offset += 10;
 						}
-					
 					}
-				})
+				});
+				setTimeout(function(){
+					waiting = false;
+				},2000);
 			}
 		};
 		
