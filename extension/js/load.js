@@ -7,6 +7,7 @@
  * 
  */
 baseurl = 'http://ec2-184-72-189-254.compute-1.amazonaws.com';
+//baseurl = 'http://extension.local';
 
 var pageload = {
 	interval : null,

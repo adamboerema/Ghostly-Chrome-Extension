@@ -3,12 +3,12 @@
 <?php require('models/model.php'); $model = new Model(DB_USER, DB_PASS, DB_HOST, DB_NAME);?>
 
 <div id="main-grid-wrapper">
-	<a href="file://extension.crx">
+	<a href="extension.crx">
 		<div class="announcement-bar">
 			<p>Click here to download our chrome extension &rarr;</p>
 		</div>
 	</a>
-	<?php $entries = $model->getAll();?>
+	<?php $entries = $model->getAll(10, 0);?>
 	<section id="main-grid">
 		<?php foreach($entries as $entry) : ?>
 			<article class="grid-item">
