@@ -115,10 +115,9 @@ $(document).ready(function(){
 	 * GRID VOTE
 	 *
 	-------------------------------------------------------------------*/
-	
-	var gridVote = $('#main-grid .grid-vote');
-	
-	gridVote.on('click', function(){
+
+	$('#main-grid').on('click', '.grid-vote', function(){
+		console.log('vote');
 		if(!$(this).hasClass('banned')){
 			var $this = $(this),
 				gridNum = parseInt($this.find('.grid-text').text());
@@ -128,9 +127,21 @@ $(document).ready(function(){
 			}, 1200);
 			setTimeout(function(){
 				$this.removeClass('clicked');
-				$this.addClass('banned');
-				$this.find('.grid-text').text((gridNum) + 1);
-			}, 3000);
+				var id = $this.data('id');
+				console.log(id);
+				$.ajax({
+					'url': baseurl.url + 'models/vote.php',
+					'type': 'POST',
+					'data' : {
+						'id' : id
+					},
+					success : function(data) {
+						console.log(data);
+						$this.addClass('banned');
+						$this.find('.grid-text').text((gridNum) + 1);
+					}
+				});
+			}, 1500);
 		}
 		return false;
 	});

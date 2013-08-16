@@ -1,6 +1,6 @@
 .override-cursor,
 .override-cursor * {
-	cursor: pointer !important;
+	cursor: url(icon.png) !important;
 }
 
 .tagger-overlay {

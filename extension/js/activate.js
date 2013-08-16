@@ -78,6 +78,7 @@ var activate = {
 		//Setup container element
 		var container = document.createElement('div');
 		container.className = 'tagger-container';
+		container.style.position = 'relative';
 		
 		//add and setup the overlay 
 		var overlay = document.createElement('div');

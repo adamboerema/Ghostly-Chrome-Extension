@@ -10,7 +10,7 @@
 	$output = '';
 	if($entries){
 		foreach($entries as $entry){
-			if($entry->condemned == 1){
+			if($entry->condemned >= 3){
 				$condemned = 'banned';
 			} else {
 				$condemned = '';
@@ -21,7 +21,7 @@
 					<figure class='grid-image'>
 						<img alt='entry' src='/uploads/{$entry->thumb_name}' width='250' />
 					</figure>
-					<a class='grid-vote {$condemned}' href='#'>
+					<a data-id={$entry->id} class='grid-vote {$condemned}' href='#'>
 						<span class='grid-vote-image'>
 							<span class='grid-vote-icon'></span>
 							<span class='grid-vote-load'></span>

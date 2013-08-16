@@ -76,9 +76,11 @@
 		 */
 		public function plusVote($id){
 			try{
-				$q = $this->db->prepare("UPDATE entries SET plus_vote = plus_vote + 1 WHERE id = :id ");
+				$q = $this->db->prepare("UPDATE entries SET plus_votes = plus_votes + 1 WHERE id = :id ");
 				$q->bindParam(':id', $id);
 				$q->execute();
+				
+				return true;
 			}
 			catch (PDOException $e){
 				echo $e->getMessage();

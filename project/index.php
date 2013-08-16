@@ -24,7 +24,7 @@
 				<figure class="grid-image">
 					<img alt="" src="/uploads/<?php echo $entry->image_name ?>" width="250" />
 				</figure>
-				<a class="grid-vote<?php if($entry->condemned){ echo ' banned'; } ?>" href="#">
+				<a data-id=<?php echo $entry->id; ?> class="grid-vote<?php if($entry->plus_votes >= 3){ echo ' banned'; } ?>" href="#">
 					<span class="grid-vote-image">
 						<span class="grid-vote-icon"></span>
 						<span class="grid-vote-load"></span>
