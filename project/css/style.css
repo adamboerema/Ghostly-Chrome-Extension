@@ -120,15 +120,24 @@ body {
 		margin: 50px;
 	}
 	
+	#main-header .main-heading {
+		margin: 0 0 70px;
+	}
+	
 	#main-header .main-logo {
 		background: url("../img/bg-logo.png") no-repeat;
 		background-size: 130px 36px;
 		height: 36px;
+		margin: 0 0 20px;
 		width: 130px;
 	}
 	
 	#main-header .main-menu {
 		top: 9px;
+	}
+	
+	#main-header .signed-out a {
+		margin: 0 0 20px;
 	}
 
 }
@@ -145,11 +154,14 @@ body {
 
 #main-grid-wrapper .announcement-bar {
 	background: #55c1e9;
+	display: block;
 	height: 40px;
-	width:100%;
+	margin: 0 0 20px;
+	width: 100%;
 }
-#main-grid-wrapper .announcement-bar p{
-	color:#FAFAFA;
+
+#main-grid-wrapper .announcement-bar p {
+	color: #fff;
 	font-size: 1.5em;
 	padding: 10px 0 0 0;
 	text-align: center;
@@ -326,6 +338,34 @@ body {
 
 /*-------------------------------------------------------------------
 
+[BUTTON STYLES]
+
+-------------------------------------------------------------------*/
+
+.button {
+	color: #fff;
+	display: block;
+	font-size: 1.6em;
+	font-weight: bold;
+	height: 50px;
+	line-height: 50px;
+	text-align: center;
+}
+
+.button.red {
+	background: #e95c55;
+}
+
+.button.dark-grey {
+	background: #1d1d1d;
+}
+
+
+
+
+
+/*-------------------------------------------------------------------
+
 [CONTAINER STYLES]
 
 -------------------------------------------------------------------*/
@@ -463,7 +503,8 @@ input[type="submit"]:hover {
 }
 
 em {
-
+	color: #aaa;
+	font: italic 1.6em Vollkorn, Georgia, serif;
 }
 
 label {

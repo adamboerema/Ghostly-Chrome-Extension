@@ -85,7 +85,7 @@ $(document).ready(function(){
 				right: '-35px'
 			}, 500, 'easeInOutExpo');
 			gridWrapper.animate({
-				marginLeft: '70px'
+				marginLeft: '50px'
 			}, 500, 'easeInOutExpo');
 			setTimeout(function(){
 				grid.trigger('refreshWookmark');
@@ -99,7 +99,7 @@ $(document).ready(function(){
 				right: '0'
 			}, 500, 'easeInOutExpo');
 			gridWrapper.animate({
-				marginLeft: '320px'
+				marginLeft: '300px'
 			}, 500, 'easeInOutExpo');
 			setTimeout(function(){
 				grid.trigger('refreshWookmark');

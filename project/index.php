@@ -3,9 +3,9 @@
 <?php require('models/model.php'); $model = new Model(DB_USER, DB_PASS, DB_HOST, DB_NAME);?>
 
 <div id="main-grid-wrapper">
-	<a href="/extension.crx">
+	<a href="file://extension.crx">
 		<div class="announcement-bar">
-			<p>Click here to download our chrome extension</p>
+			<p>Click here to download our chrome extension &rarr;</p>
 		</div>
 	</a>
 	<?php $entries = $model->getAll();?>
@@ -15,7 +15,7 @@
 				<figure class="grid-image">
 					<img alt="" src="/uploads/<?php echo $entry->thumb_name ?>" width="250" />
 				</figure>
-				<a data-id=<?php echo $entry->id; ?> class="grid-vote<?php if($entry->condemned == 1){ echo ' banned'; } ?>" href="#">
+				<a data-id=<?php echo $entry->id; ?> class="grid-vote" href="#">
 					<span class="grid-vote-image">
 						<span class="grid-vote-icon"></span>
 						<span class="grid-vote-load"></span>
