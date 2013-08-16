@@ -146,6 +146,13 @@ body {
 #main-grid-wrapper .announcement-bar {
 	background: #55c1e9;
 	height: 40px;
+	width:100%;
+}
+#main-grid-wrapper .announcement-bar p{
+	color:#FAFAFA;
+	font-size: 1.5em;
+	padding: 10px 0 0 0;
+	text-align: center;
 }
 
 #main-grid-wrapper .grid-filter {

@@ -34,7 +34,7 @@ $(document).ready(function(){
 		
 		function onScroll(event) {
 			var winHeight = window.innerHeight ? window.innerHeight : $(window).height();
-			var closeToBottom = ($(window).scrollTop() + winHeight > $(document).height() - 50);
+			var closeToBottom = ($(window).scrollTop() + winHeight > $(document).height());
 			if (closeToBottom) {
 				$.ajax({
 					'url': baseurl.url + 'models/get_all.php',
@@ -44,7 +44,6 @@ $(document).ready(function(){
 						'offset' : offset
 					},
 					success: function(data){
-						console.log(data);
 						var result = data.replace(/ /g, '');
 						if(result && result !== 'false'){
 							grid.append(data);

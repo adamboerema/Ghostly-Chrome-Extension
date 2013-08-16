@@ -3,9 +3,11 @@
 <?php require('models/model.php'); $model = new Model(DB_USER, DB_PASS, DB_HOST, DB_NAME);?>
 
 <div id="main-grid-wrapper">
-	<div class="announcement-bar">
-		<h2>Download our chrome extension!</h2>
-	</div>
+	<a href="">
+		<div class="announcement-bar">
+			<p>Click here to download our chrome extension</p>
+		</div>
+	</a>
 	<?php $entries = $model->getAll();?>
 	<section id="main-grid">
 		<?php foreach($entries as $entry) : ?>
