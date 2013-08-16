@@ -4,19 +4,8 @@
 
 <div id="main-grid-wrapper">
 	<div class="announcement-bar">
-	
+		<h2>Download our chrome extension!</h2>
 	</div>
-
-	<div class="grid-filter">
-		<label for="">Filter By:</label>
-		<select id="filter-status">
-			<option value="popular">Popular</option>
-		</select>
-		<select id="filter-category">
-			<option value="all">All</option>
-		</select>
-	</div>
-	
 	<?php $entries = $model->getAll();?>
 	<section id="main-grid">
 		<?php foreach($entries as $entry) : ?>

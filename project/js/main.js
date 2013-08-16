@@ -44,6 +44,7 @@ $(document).ready(function(){
 						'offset' : offset
 					},
 					success: function(data){
+						console.log(data);
 						var result = data.replace(/ /g, '');
 						if(result && result !== 'false'){
 							grid.append(data);
