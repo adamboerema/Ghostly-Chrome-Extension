@@ -20,5 +20,6 @@
   },
   "browser_action": {
     "default_icon": "icon.png"
-  }
+  },
+  "web_accessible_resources": ["css/logo.png"]
 }

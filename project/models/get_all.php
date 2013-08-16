@@ -10,7 +10,7 @@
 	$output = '';
 	if($entries){
 		foreach($entries as $entry){
-			if($entry->condemned >= 3){
+			if($entry->condemned == 1){
 				$condemned = 'banned';
 			} else {
 				$condemned = '';

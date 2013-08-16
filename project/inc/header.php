@@ -18,6 +18,7 @@
 			<div class="main-header-wrapper">
 				<div class="main-heading">
 					<a class="main-logo" href="#">Ghostly</a>
+					<a href="">Download the Chrome Extension</a>
 					<a class="main-menu" href="#">
 						<span class="menu-display"></span>
 						<span class="menu-hide"></span>

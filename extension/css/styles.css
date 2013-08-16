@@ -1,6 +1,6 @@
 .override-cursor,
 .override-cursor * {
-	cursor: url(icon.png) !important;
+	cursor: copy !important;
 }
 
 .tagger-overlay {
@@ -16,5 +16,5 @@
 }
 
 .tagger-overlay:hover {
-	background: rgba(255, 255, 255, 0.4);
+	background: rgba(255, 0, 0, 0.4);
 }

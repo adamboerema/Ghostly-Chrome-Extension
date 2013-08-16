@@ -6,7 +6,7 @@
  * @author Rob Dozier
  * 
  */
-
+baseurl = 'http://extension.local';
 
 var activate = {
 	onState : null,
@@ -99,7 +99,7 @@ var activate = {
 	},
 	sendImage : function(img){
 		var ajax = new XMLHttpRequest(),
-			url = 'http://extension.local/api/add';
+			url = baseurl + '/api/add';
 		
 		//success listener
 		 ajax.onreadystatechange = function() {

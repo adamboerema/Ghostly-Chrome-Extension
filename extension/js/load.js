@@ -6,6 +6,7 @@
  * @author Rob Dozier
  * 
  */
+baseurl = 'http://extension.local/';
 
 var pageload = {
 	interval : null,
@@ -21,9 +22,12 @@ var pageload = {
 		var images = document.images;
 		pageload.interval = setInterval(function(){
 			for(i=0; i < images.length; i++){
-				if(urls.indexOf(images[i].src) >= 0 && !images[i].classList.contains('condemned')){
-					images[i].classList.add('condemned');
-					images[i].src = 'http://3.bp.blogspot.com/-tH0gsZtUZBM/Tx-MoaF0gRI/AAAAAAAAAVg/HIvuUUzXzz0/s320/nic_cage_faceoff11.jpg';
+				if(urls.indexOf(images[i].src) >= 0 && 
+				   !images[i].classList.contains('condemned') &&
+				   location.href !== baseurl){
+						images[i].classList.add('condemned');
+						images[i].src = baseurl + '/nic_cage.jpg';
+						images[i].style.maxHeight = '250px';
 				}	
 			}
 		}, 500);
@@ -31,7 +35,7 @@ var pageload = {
 	
 	imageList : function(){
 		var ajax = new XMLHttpRequest(),
-			url = 'http://extension.local/api/getcondemned';
+			url = baseurl + '/api/getcondemned';
 		
 		//success listener
 		 ajax.onreadystatechange = function() {

@@ -75,8 +75,13 @@
 		 * 
 		 */
 		public function plusVote($id){
+			$votes = $this->getVotes($id);
 			try{
-				$q = $this->db->prepare("UPDATE entries SET plus_votes = plus_votes + 1 WHERE id = :id ");
+				if($votes > 3){
+					$q = $this->db->prepare("UPDATE entries SET plus_votes = plus_votes + 1, condemned = 1 WHERE id = :id ");
+				} else {
+					$q = $this->db->prepare("UPDATE entries SET plus_votes = plus_votes + 1 WHERE id = :id ");
+				}
 				$q->bindParam(':id', $id);
 				$q->execute();
 				
@@ -101,6 +106,28 @@
 				$q = $this->db->prepare("UPDATE entries SET plus_vote = plus_vote - 1 WHERE id = :id ");
 				$q->bindParam(':id', $id);
 				$q->execute();
+			}
+			catch (PDOException $e){
+				echo $e->getMessage();
+			}			
+		}
+		
+		/**
+		 * 
+		 * @access public
+		 * @param int entry id
+		 * @return int
+		 * 
+		 * Positive vote on entry
+		 * 
+		 */
+		public function getVotes($id){
+			try{
+				$q = $this->db->prepare("SELECT plus_votes FROM entries WHERE id = :id ");
+				$q->bindParam(':id', $id);
+				$q->execute();
+				$results = $q->fetch(PDO::FETCH_OBJ);
+				return $results->plus_votes;
 			}
 			catch (PDOException $e){
 				echo $e->getMessage();

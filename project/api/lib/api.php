@@ -180,6 +180,10 @@
         private function imagePath($url){
             $path = pathinfo($url);
             $time = time();
+			
+			//remove query strings from image
+			$filter = explode('?', $path['basename']);
+			$path['basename'] = $filter[0];
             
             $image = array(
                 'directory' => ABSPATH. "/uploads/",
