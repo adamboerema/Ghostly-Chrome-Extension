@@ -1,5 +1,6 @@
 .project
 .DSstore
 *.esproj
+extension.pem
 
 project/uploads/*

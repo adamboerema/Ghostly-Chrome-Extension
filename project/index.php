@@ -3,7 +3,7 @@
 <?php require('models/model.php'); $model = new Model(DB_USER, DB_PASS, DB_HOST, DB_NAME);?>
 
 <div id="main-grid-wrapper">
-	<a href="">
+	<a href="/extension.crx">
 		<div class="announcement-bar">
 			<p>Click here to download our chrome extension</p>
 		</div>
