@@ -13,7 +13,9 @@
 		<?php foreach($entries as $entry) : ?>
 			<article class="grid-item">
 				<figure class="grid-image">
-					<img alt="" src="/uploads/<?php echo $entry->thumb_name ?>" width="250" />
+					<a target="_blank" href="/uploads/<?php echo $entry->image_name; ?>">
+						<img alt="" src="/uploads/<?php echo $entry->thumb_name ?>" width="250" />
+					</a>
 				</figure>
 				<a data-id=<?php echo $entry->id; ?> class="grid-vote" href="#">
 					<span class="grid-vote-image">
