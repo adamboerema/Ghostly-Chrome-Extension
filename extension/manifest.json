@@ -1,7 +1,7 @@
 {
   "manifest_version": 2,
-  "name": "Boerema-Dozier Extension",
-  "description": "Chrome extension for all kinds of magic",
+  "name": "Ghostly",
+  "description": "Be the Grim Reaper of the Internet",
   "version": "1.0",
   "content_scripts": [
     {

@@ -6,8 +6,7 @@
  * @author Rob Dozier
  * 
  */
-baseurl = 'http://ec2-184-72-189-254.compute-1.amazonaws.com';
-//baseurl = 'http://extension.local';
+baseurl = 'ghostly.purplerockscissors.com';
 
 var activate = {
 	onState : null,

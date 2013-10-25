@@ -1,4 +1,4 @@
-SetEnv ENVIRONMENT staging
+SetEnv ENVIRONMENT production
 SetEnv BASE_URL /
 
 RewriteEngine on 

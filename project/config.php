@@ -2,8 +2,8 @@
 	if($_SERVER['ENVIRONMENT'] == 'production'){
 		define('DB_HOST', 'localhost');
 		define('DB_USER', 'root');
-		define('DB_PASS', 'password!@#$');
-		define('DB_NAME', 'extension'); 
+		define('DB_PASS', 'cJlsL205Sprplrack1');
+		define('DB_NAME', 'ghostly'); 
 		
 		error_reporting(0);
 	}
@@ -27,4 +27,3 @@
     
     //Define root
     define('ABSPATH', dirname(__FILE__));
-?>  

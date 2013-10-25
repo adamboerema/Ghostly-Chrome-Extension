@@ -5,7 +5,7 @@
 <div id="main-grid-wrapper">
 	<a href="extension.crx">
 		<div class="announcement-bar">
-			<p>Click here to download our chrome extension &rarr;</p>
+			<p><a href="ghostly.crx">Click here to download our chrome extension &rarr;</p></a>
 		</div>
 	</a>
 	<?php $entries = $model->getAll(10, 0);?>

@@ -1,6 +1,7 @@
 .project
-.DSstore
+.DS_store
 *.esproj
 extension.pem
 
 project/uploads/*
+project/config.php

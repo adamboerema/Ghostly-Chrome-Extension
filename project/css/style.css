@@ -110,6 +110,19 @@ body {
 		-webkit-transform: scale(1,1);
 }
 
+#main-header .how-it-works{
+	margin: 20px 0 0 0;
+}
+
+#main-header .how-it-works p{
+	margin: 10px 0 0 0;
+}
+
+#main-header .how-it-works h3{
+	color:white;
+}
+
+
 @media screen and (min-width: 960px) {
 
 	#main-header {
@@ -452,7 +465,8 @@ h3, .h3,
 h4, .h4,
 h5, .h5,
 h6, .h6 {
-
+	color: #aaa;
+	font: Vollkorn, Georgia, serif;
 }
 
 h1, .h1 {
@@ -464,7 +478,7 @@ h2, .h2 {
 }
 
 h3, .h3 {
-
+	
 }
 
 h4, .h4 {
@@ -516,7 +530,8 @@ mark {
 }
 
 p {
-
+	color: #aaa;
+	font: 1.2em Vollkorn, Georgia, serif;
 }
 
 textarea {
