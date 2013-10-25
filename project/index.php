@@ -3,9 +3,9 @@
 <?php require('models/model.php'); $model = new Model(DB_USER, DB_PASS, DB_HOST, DB_NAME);?>
 
 <div id="main-grid-wrapper">
-	<a href="extension.crx">
+	<a href="ghostly.crx">
 		<div class="announcement-bar">
-			<p><a href="ghostly.crx">Right click and save to download our chrome extension &rarr;</p></a>
+			<p>Right click and save to download our chrome extension &rarr;</a>
 		</div>
 	</a>
 	<?php $entries = $model->getAll(10, 0);?>
