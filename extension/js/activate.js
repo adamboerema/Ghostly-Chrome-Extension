@@ -3,10 +3,9 @@
  * the interface for the 
  * 
  * @author Adam Boerema
- * @author Rob Dozier
  * 
  */
-baseurl = 'ghostly.purplerockscissors.com';
+baseurl = 'http://ghostly.purplerockscissors.com';
 
 var activate = {
 	onState : null,
@@ -46,7 +45,6 @@ var activate = {
 		}
 	},
 	addEvents : function(e) {
-		//console.log('add');
 		if(!e.classList.contains('tagger-image')){
 			e.classList.add('tagger-image');
 			activate.wrap(e);
@@ -54,7 +52,6 @@ var activate = {
 	},
 		
 	removeEvents : function(e) {
-		//console.log('remove');
 		if(e.classList.contains('tagger-image')){
 			var clone = e,
 				originalParent = e.parentNode.parentNode;
@@ -104,7 +101,7 @@ var activate = {
 		//success listener
 		 ajax.onreadystatechange = function() {
 	        if (ajax.readyState == 4 && ajax.status == 200) {
-	            console.log(ajax.responseText);
+	            //console.log(ajax.responseText);
 	        }
     	}
     	ajax.open("POST", url, true);

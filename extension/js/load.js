@@ -3,10 +3,9 @@
  * the interface for the 
  * 
  * @author Adam Boerema
- * @author Rob Dozier
  * 
  */
-baseurl = 'ghostly.purplerockscissors.com';
+baseurl = 'http://ghostly.purplerockscissors.com';
 
 var pageload = {
 	interval : null,

@@ -37,7 +37,6 @@ $(document).ready(function(){
 		function onScroll(event) {
 			var winHeight = window.innerHeight ? window.innerHeight : $(window).height();
 			var closeToBottom = ($(window).scrollTop() + winHeight > $(document).height());
-			console.log(waiting);
 			if (closeToBottom && !waiting) {
 				waiting = true;	
 				$.ajax({
